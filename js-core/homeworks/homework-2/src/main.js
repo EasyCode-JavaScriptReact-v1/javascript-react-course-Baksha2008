@@ -9,7 +9,7 @@ let team = `команда`;
 let howMuch = 'Сколько';
 let sentence = 'нужно программистов чтобы сделать проект ?';
 
-let task1 = `${howMuch} ${sentence} ${numbers[1]}, ${numbers[0]},    ${team}`
+let task1 = `${howMuch} ${sentence} ${numbers[1]}, ${numbers[0]}, ${team}`
 
 console.log(task1);
 
