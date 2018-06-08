@@ -30,6 +30,7 @@ function toUpperCase(obj) {
     return newObj
 }
 const objectWithName = { name: 'privet kak dela' };
+console.log(objectWithName);
 console.log(toUpperCase(objectWithName));
 
 /*
