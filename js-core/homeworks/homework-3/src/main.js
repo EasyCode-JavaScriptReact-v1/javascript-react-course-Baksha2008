@@ -127,15 +127,18 @@ console.log(myName);
 */
 
 function fizzBuzz(num) {
-  if(num % 3 == 0 && num % 5 == 0){
-    return console.log('FizzBuzz');
-  } else if(num % 5 == 0){
-    return console.log('Buzz');
-  } else if (num % 3 == 0){
-    return console.log('Fizz');
-  } else {
-    return console.log(num);
-  }
+  let someRes;
+if(num % 3 == 0 && num % 5 == 0){
+    someRes = 'FizzBuzz';
+} else if (num % 3 == 0){
+    someRes = 'Fizz';
+} else if(num % 5 == 0){
+  someRes = 'Buzz';
+} else{
+  someRes = num;
+}
+console.log(someRes)
+return someRes
 }
 
 fizzBuzz(1); // 1
@@ -156,8 +159,8 @@ function super2(arg1, arg2, arg3, callback) {
   let arr = [arg1, arg2 ,arg3];
   callback(arr);
 }
-let callArr = function(arg){
-  console.log(arg);
+let callArr = function(callback){
+  console.log(callback);
 }
 
 super2('my', 'name', 'Serg', callArr);
