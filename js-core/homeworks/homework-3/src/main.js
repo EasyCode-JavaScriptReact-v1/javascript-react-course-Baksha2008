@@ -5,9 +5,8 @@
 
 function returnObject(value) {
   let obj = {
-    name: 'someName'
+    name: value
   }
-  obj.name = value
 
   return obj
 }
@@ -23,8 +22,12 @@ console.log(someObject);
 */
 
 function toUpperCase(obj) {
-  obj.name = obj.name.toUpperCase()
-  return obj
+    let newObj = {
+      name: obj.name.toUpperCase()
+    }
+
+
+    return newObj
 }
 const objectWithName = { name: 'privet kak dela' };
 console.log(toUpperCase(objectWithName));
