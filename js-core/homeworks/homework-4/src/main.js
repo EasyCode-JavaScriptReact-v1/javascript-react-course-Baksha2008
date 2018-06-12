@@ -6,8 +6,6 @@
 * Если тип аргумента Строка и длина этой строки не равна 10 -> возвращать "длина вашей строки: <длина строки>
 *                            Если длина 10 -> 'you win'
 * */
-  
-
 function returnType(arg){
   if(typeof arg == 'number' || typeof arg == 'object' ){
     return true
@@ -25,39 +23,21 @@ console.log(returnType({}));
 console.log(returnType(function(){}));  
 console.log(returnType('helloworld'));
 console.log(returnType('hello world'));
-
-
-
-
-
 // Задача в классе
-
-
 let webStore = {
         category: {
             notebook: ['Lenova', 'Asus', 'Xiaomi'],
             mobile:['Nokia', 'Sony', 'Apple']
         }
     };
-
     let category = webStore.category;
-
     for(let key in category){
-        
+      let someValue = category[key];
         console.log('Категория:', key);
-
-       for(let i = 0; i < category[key].length; i++){
-          
-        console.log(category[key][i]);
-
+       for(let i = 0; i < someValue.length; i++){
+        console.log(someValue[i]);
        }
     }
-
-
-
-
-
-
 /*
  1. Напишите функцию которая принимает 2 числа
  и возвращает массив содержащий числа между первым числом и вторым числом;
@@ -115,13 +95,12 @@ fizzBuzz100();
  function newArr(arr){
    let newArray = [];
    for(let i = 0; i < arr.length; i++){
-     newArray.push( typeof arr[i]);
+     let someValue = arr[i];
+     newArray.push( typeof someValue);
    }
    return newArray
  }
-
  console.log(newArr(arr));
-
 /*
  1. @@SUPER@@. Вам дан массив array, содержащий внутри объекты.
  Напишите функцию которая внутри цикла проходится по каждому элементу массива
@@ -130,62 +109,24 @@ fizzBuzz100();
  2. На основании нового массива, создайте новую функцию, которая вернет новый массив
   содержащий все объекты содержащие свойство unknownAge: true
  */
-
-// let array = Array.from({length: 35},
-//   (value, index) => (index % 2 ? {age: index + 2} : {age: NaN}),
-// );
-
-// // console.log(array);
-
-
-
-// function solution(arg) {
-
-  
-//   // for(let key in arg) {
-//   //   let arrayKey = arg[key];
-//   //     if(Number.isNaN(arrayKey.age)){
-//   //       arrayKey.unknownAge = true
-//   //   }
-//   //   // console.log(arr);
-//   //   return arg
-//   // }
-// }
-// function newArr(arg){
-//   let newArray = [];
-    
-//   for(let i = 0; i < arg.length; i++) {
-      
-//       if(arg[i].unknownAge === true) {
-//           newArray.push(arg[i]);
-//       }
-//   }
-//   return newArray;
-// }
-// solution(array);
-
-
 let array = Array.from({ length: 35 },
   (value, index) => (index % 2 ? { age: index + 2 } : { age: NaN }),
 );
-
-
 function solution(arr) {
-  for (let key in arr) {
-    let arrKey = arr[key];
-      if (Number.isNaN(arrKey.age)) {
-          arrKey.unknownAge = 'true';
+  for (let i= 0; i < arr.length; i++) {
+    let simpleElement = arr[i];
+      if (isNaN(simpleElement.age)) {
+        simpleElement.unknownAge = 'true';
       }
   }
   return unknownAge(arr);
 }
-
 function unknownAge(arr) {
   let newArr = [];
-  for (let key in arr) {
-    let arrKey = arr[key];
-      if (arr[key].unknownAge) {
-          newArr.push(arr[key]);
+  for (let i = 0; i < arr.length; i++) {
+    let simpleElement = arr[i];
+      if (simpleElement.unknownAge) {
+          newArr.push(simpleElement);
       }
   }
   return newArr;
