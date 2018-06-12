@@ -66,17 +66,10 @@ console.log(numbersBetween(10, 12));
 // 1. FizzBuzz 3, 5, 3 && % 5
 
 function fizzBuzz(num) {
-  let someRes;
-if(num % 3 == 0 && num % 5 == 0){
-    someRes = 'FizzBuzz';
-} else if (num % 3 == 0){
-    someRes = 'Fizz';
-} else if(num % 5 == 0){
-  someRes = 'Buzz';
-} else{
-  someRes = num;
-}
-return someRes
+  let someRes = (num % 15 == 0) ? 'FizzBuzz' :
+      (num % 3 == 0) ? 'Fizz' :
+      (num % 5 == 0) ? 'Buzz' : num ;
+  return someRes
 }
 function fizzBuzz100() {
   for(let i = 1; i <= 100; i++) {
