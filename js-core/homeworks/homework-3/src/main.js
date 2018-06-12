@@ -25,8 +25,6 @@ function toUpperCase(obj) {
     let newObj = {
       name: obj.name.toUpperCase()
     }
-
-
     return newObj
 }
 const objectWithName = { name: 'privet kak dela' };
@@ -100,8 +98,10 @@ console.log(simpleObjectGenerator('protocol', { url: '22' }, 8000));
 var myName = { name: 'Serg' };
 
 function addNameToUser(newKey, newValue, userName) {
-  let obj = {};
-  obj[newKey] = newValue;
+  let obj = {
+    [newKey]: newValue
+  };
+  // obj[newKey] = newValue;
   if(userName.name){
     obj.name = userName
   }
@@ -159,8 +159,8 @@ function super2(arg1, arg2, arg3, callback) {
   let arr = [arg1, arg2 ,arg3];
   callback(arr);
 }
-let callArr = function(callback){
-  console.log(callback);
+let callArr = function(arg){
+  console.log(arg);
 }
 
-super2('my', 'name', 'Serg', callArr);
+super2('my', 'name', 'Serg', callArr); 
