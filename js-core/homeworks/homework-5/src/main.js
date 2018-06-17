@@ -35,14 +35,17 @@ let arr2 = [
   9
 ];
 function moveZeroToEnd(arr) {
+  let newArr = [];
+  let arrWithnumber = [];
   for(let i=0;i<arr.length;i++){
     let index = arr[i];
     if(index===0){
-      arr.splice(i,1);
-      arr.push(index);
+      newArr.push(index);
+      continue
     }  
+    arrWithnumber.push(index);
   }
-  return arr
+  return arrWithnumber.concat(newArr);
 }
 console.log(moveZeroToEnd(arr1));
 console.log(moveZeroToEnd(arr2));
@@ -118,12 +121,23 @@ capMe(['jo', 'nelson', 'jurie'])
  */
 
 function random(arr) {
+  let lastElem = arr[arr.length - 1];
+  let firstElem = arr[0];
+  let step = (lastElem - firstElem)/arr.length;
+  for(let i = 0;i<arr.length;i++){
+    let elem = arr[i];
+    let nextElem = arr[i+1];
+    if(elem + step != nextElem){
+      return elem + step
+    }
+  }
+  return
 }
 
-random([1, 3, 5, 9]);
-random([0, 8, 16, 32]);
-random([0, 16, 24, 32]);
-random([4, 6, 8, 10]);
+console.log(random([1, 3, 5, 9]));
+console.log(random([0, 8, 16, 32]));
+console.log(random(([0, 16, 24, 32])));
+console.log(random([4, 6, 8, 10]));
 
 /*
  Задача с собеседований*
