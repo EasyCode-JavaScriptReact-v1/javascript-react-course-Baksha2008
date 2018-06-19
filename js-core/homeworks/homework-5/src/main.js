@@ -122,11 +122,14 @@ capMe(['jo', 'nelson', 'jurie'])
 
 function random(arr) {
   let lastElem = arr[arr.length - 1];
-  let firstElem = arr[0];
+  let firstElem = arr[0]; 
   let step = (lastElem - firstElem)/arr.length;
   for(let i = 0;i<arr.length;i++){
     let elem = arr[i];
     let nextElem = arr[i+1];
+    if(nextElem){
+      return lastElem - arr[arr.length -2];
+    }
     if(elem + step != nextElem){
       return elem + step
     }
@@ -151,22 +154,12 @@ console.log(random([4, 6, 8, 10]));
  */
 
 function openBraces(arr) {
-  let newArr = [];
   if(Array.isArray(arr)){
-  // console.log(arr)
-    for(let i=0;i<arr.length;i++){
-      let elem = arr[i];
-        if(typeof elem == 'number'){
-          newArr.push(elem)
-        } else if(Array.isArray(elem)){			
-          newArr.push(elem);
-          openBraces(elem);
-      }
-    }
-  return `${newArr}`;
+    return arr.reduce(function(result, current){
+      return result.concat(openBraces(current))
+    }, [])
   }
+  return arr
 };
-
-
 console.log(openBraces([25,10,[10,[15]]]));
 console.log(openBraces([[1,2],[3,[4]],5, 10]));
