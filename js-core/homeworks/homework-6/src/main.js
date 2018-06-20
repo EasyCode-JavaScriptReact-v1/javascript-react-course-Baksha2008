@@ -396,15 +396,15 @@ console.log(reverseEachWord('Hi my Name is', false));
 
 function wordCounter(sentence) {
   let strToArr = sentence.split(' ');
-  let obj = strToArr.reduce(function(newValue, elem, index, arr) {
+  let obj = strToArr.reduce(function(newValue, elem) {
     let firstElem = elem;
     let counter = 0;
-    strToArr.forEach(function(elem, index, arr) {
+    // strToArr.forEach(function(elem) {
       if (firstElem === elem) {
         counter++;
         newValue[firstElem] = counter;
       };
-    });
+    // });
     return newValue;
   }, {});
   return obj;
@@ -472,15 +472,17 @@ console.log(createHashTags(listOfCompanys));
 //  *
 //  * */
 
-// function uniqueElements(arr) {
-
-// }
+function uniqueElements(arr) {
+  return arr.filter(function(value, index, arr){
+    return arr.indexOf(value) == index
+  })
+}
 
 // //
-// let notUniqArray = [1, 1, 2, 2, 2, 5, 10, 25, 30, 5, 1, 0, 22, 3, 10, 3];
+let notUniqArray = [1, 1, 2, 2, 2, 5, 10, 25, 30, 5, 1, 0, 22, 3, 10, 3];
 // //
-// console.log(uniqueElements(notUniqArray)); //1,2,5,10,25,30,0,22,3,
-// console.log(uniqueElements([1, 1, 2, 3, 3])); // 1,2,3
+console.log(uniqueElements(notUniqArray)); //1,2,5,10,25,30,0,22,3,
+console.log(uniqueElements([1, 1, 2, 3, 3])); // 1,2,3
 
 // /*
 // *
@@ -491,12 +493,19 @@ console.log(createHashTags(listOfCompanys));
 // *
 // * */
 
-function filter (arr, callback, thisArg) {
+function filter (arr, callback) {
   let results = [];
   for (let i = 0; i < arr.length; i = i + 1) {
-    if (callback.call(thisArg, arr[i], i, arr)) {
+    if (callback(arr[i])) {
       results.push(arr[i]);
     }
   }
   return results;
 };
+
+let nums = [1,2,3,4,5,6];
+let data = filter(nums, function(num){
+  return num > 2;
+})
+
+console.log(data)
