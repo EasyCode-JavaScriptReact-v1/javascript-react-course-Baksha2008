@@ -1,24 +1,24 @@
-// 'use strict';
+'use strict';
 
-// /*
-//  *
-//  * TASK 1
-//  *
-//  * Напишите функцию которая будет вызываться трижды и складывать
-//  * все передаваемые ей числа
-//  *
-//  * */
+/*
+ *
+ * TASK 1
+ *
+ * Напишите функцию которая будет вызываться трижды и складывать
+ * все передаваемые ей числа
+ *
+ * */
 
-// function add(x) {
-//   return function(a){
-//     return function(b){
-//       return x + a + b
-//     }
-//   }
-// }
+function add(x) {
+  return function(a){
+    return function(b){
+      return x + a + b
+    }
+  }
+}
 
-// console.log(add(1)(2)(3)); // 6
-// console.log(add(10)(5)(15)); // 30
+console.log(add(1)(2)(3)); // 6
+console.log(add(10)(5)(15)); // 30
 
 // /*
 //  *
@@ -34,34 +34,36 @@
 //  *
 //  * */
 
-// function patternModule(num) {
-//   let counter = 0;
-//   let obj = {
-//     method: function(){
-//       return ++counter
-//     },
-//     method2: function(){
-//       return counter = 0
-//     }
-//   }
-//   return obj;
+function patternModule(num) {
+  let counter = 0;
+  let obj = {
+    method: function(){
+      ++counter
+      return counter
+    },
+    method2: function(){
+      counter = 0
+      return counter 
+    }
+  }
+  return obj;
 
-// }
+}
 
-// // patternModule
+// patternModule
 
-// let test = patternModule(); // 0
-// console.log(test.method()); //1
-// console.log(test.method()); //2
-// console.log(test.method()); //3
-// console.log(test.method()); //4
-// console.log(test.method()); //5
-// console.log(test.method()); //6
-// console.log(test.method2()); //0
-// console.log(test.method()); //1
-// console.log(test.method()); //2
-// console.log(test.method()); //3
-// console.log(test.method2()); //0
+let test = patternModule(); // 0
+console.log(test.method()); //1
+console.log(test.method()); //2
+console.log(test.method()); //3
+console.log(test.method()); //4
+console.log(test.method()); //5
+console.log(test.method()); //6
+console.log(test.method2()); //0
+console.log(test.method()); //1
+console.log(test.method()); //2
+console.log(test.method()); //3
+console.log(test.method2()); //0
 
 
 // /*
@@ -83,9 +85,10 @@
 let jun = {};
 
 function methodCounter(obj, name, num, fn) {
+  let counter = num;
   obj[name] = function(...args){
-  if(num>0){
-     return [num--, fn(args)]
+  if(counter>0){
+     return [counter--, fn(args)]
     }
     return `ERROR ! add more methods`
   }
