@@ -92,6 +92,11 @@ function methodCounter(obj, name, num, fn) {
     }
     return `ERROR ! add more methods`
   }
+  obj.addCounter = function(newNum, name){
+      name = 'addCounter'
+      counter = newNum
+      return [counter, name]
+      }
   };
 
 methodCounter(jun, 'logger', 2, function (args) {
@@ -104,7 +109,12 @@ console.log(jun.logger(1, 2, 3, 4)); // 2, 10
 console.log(jun.logger(5, 5, 5, 5)); // 1, 20
 console.log(jun.logger(5, 5)); // ERROR ! add more methods
 
-// jun.addCounter(10, methodName);
+console.log(jun.addCounter(10, name));
+console.log(jun.logger(1, 2, 3, 4)); // 2, 10
+console.log(jun.logger(1, 2, 3, 4)); // 2, 10
+console.log(jun.logger(1, 2, 3, 4)); // 2, 10
+console.log(jun.logger(1, 2, 3, 4)); // 2, 10
+
 // @SUPER,
 
 /*
