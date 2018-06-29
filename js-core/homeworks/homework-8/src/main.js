@@ -55,7 +55,7 @@ function validBraces(str) {
     } 
   }
 
-  return !stack.length;
+  return stack.length == 0;
   }
 
 
@@ -82,7 +82,8 @@ console.log(validBraces('({[]})')); // => returns true
  * */
 
 function sum(num) {
-   if( num!= 1){
+  sum.catchNum = 0
+   if( num>1){
      return num + sum(num-1)
     }
     return 1

@@ -35,18 +35,19 @@ let arr2 = [
   9
 ];
 function moveZeroToEnd(arr) {
-  let newArr = [];
-  let arrWithnumber = [];
-  for(let i=0;i<arr.length;i++){
-    let index = arr[i];
-    if(index===0){
-      newArr.push(index);
-      continue
-    }  
-    arrWithnumber.push(index);
+  let zeroArray = []
+  let newArray = []
+  arr.forEach(elem=>{
+    if(typeof elem == 'number' && elem == 0){
+      zeroArray.push(elem)
+    }
+    else{
+    newArray.push(elem)
   }
-  return arrWithnumber.concat(newArr);
+  })
+  return newArray.concat(zeroArray)
 }
+
 console.log(moveZeroToEnd(arr1));
 console.log(moveZeroToEnd(arr2));
 /*
@@ -59,11 +60,7 @@ console.log(moveZeroToEnd(arr2));
 
 function minimalNumber(arr) {
   
-  arr = arr.sort(function compareNumeric(a, b) {
-    if (a > b) return 1;
-    if (a < b) return -1;
-  }
-  )
+  arr = arr.sort((a, b) => a > b)
   let minNum1 = arr[0];
   let minNum2 = arr[1];
   return minNum1 + minNum2;
@@ -80,7 +77,7 @@ console.log(minimalNumber([0,200,10,25,15]));
  nameShuffler('James Bond'); => "Bond James"
  */
 
-function nameShuffler(str) {
+ let nameShuffler = str => {
   let arr = str.split(' ');
   arr.reverse();
   let arrToStr = arr.join(' ');
@@ -100,12 +97,17 @@ console.log(nameShuffler('john McClane'));
  */
 
 function capMe(arr) {
-  for(let i=0;i< arr.length ;i++){
-    let elem = arr[i]
+  // for(let i=0;i< arr.length ;i++){
+  //   let elem = arr[i]
+  //   elem = elem.toLowerCase()
+  //   elem = elem.charAt(0).toUpperCase() + elem.slice(1);
+  //   console.log(elem);
+  // }
+  arr.forEach(elem =>{
     elem = elem.toLowerCase()
     elem = elem.charAt(0).toUpperCase() + elem.slice(1);
-    console.log(elem);
-  }
+    console.log(elem)
+})
 };
 capMe(['KARLY', 'DANIEL', 'KELSEY'])
 capMe(['jo', 'nelson', 'jurie'])
@@ -120,7 +122,7 @@ capMe(['jo', 'nelson', 'jurie'])
   [0,16,24,32] => 8
  */
 
-function random(arr) {
+let random = arr => {
   let lastElem = arr[arr.length - 1];
   let firstElem = arr[0]; 
   let step = (lastElem - firstElem)/arr.length;
@@ -153,7 +155,7 @@ console.log(random([4, 6, 8, 10]));
   [25,10,[10,[15]]] => [25,10,10,15]
  */
 
-function openBraces(arr) {
+let openBraces = arr => {
   if(Array.isArray(arr)){
     return arr.reduce(function(result, current){
       return result.concat(openBraces(current))
