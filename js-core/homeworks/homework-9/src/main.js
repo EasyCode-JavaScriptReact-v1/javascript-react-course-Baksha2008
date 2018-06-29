@@ -129,9 +129,15 @@ let junior = {};
 
 // fn.length == arguments.length
 
-function addMethod(object, name, fn) {
-
+const addMethod = (object, name, fn) => {
+  object[name] = function() {
+    if (fn.length == arguments.length) {
+      return fn;
+    }
+  };
+  return fn();
 }
+
 
 addMethod(junior, 'ok', function() {
   console.log('zero arguments');
