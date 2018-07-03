@@ -82,7 +82,6 @@ console.log(validBraces('({[]})')); // => returns true
  * */
 
 function sum(num) {
-  sum.catchNum = 0
    if( num>1){
      return num + sum(num-1)
     }
