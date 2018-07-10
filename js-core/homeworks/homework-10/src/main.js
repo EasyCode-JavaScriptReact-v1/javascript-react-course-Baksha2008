@@ -42,17 +42,17 @@ z(x); // что вернет
 //  *
 //  * */
 
-let $ = function(str) {
-  if(typeof str == 'string'){
-    let result = `<${str}></${str}>`
-    return result
-  }
-};
+// let $ = function(str) {
+//   if(typeof str == 'string'){
+//     let result = `<${str}></${str}>`
+//     return result
+//   }
+// };
 
-let createBODY = $('body');
-let createDIV = $('div');
-console.log(createBODY); // <body></body>
-console.log(createDIV); // <div></div>
+// let createBODY = $('body');
+// let createDIV = $('div');
+// console.log(createBODY); // <body></body>
+// console.log(createDIV); // <div></div>
 
 // /*
 //  *
@@ -68,18 +68,28 @@ console.log(createDIV); // <div></div>
 
 var ezjQuery = {
   tag: '',
+  state: [],
  add(str, text){
    let elem = text || ''
   if(typeof str == 'string'){
-    this.tag += `<${str}>${elem}</${str}>`;
-    return this.tag
+    this.tag += `<${str}>${elem}</${str}>`
+    this.state.push(str);
+    return this
   }
- }
+ },
+//  render(){
+//   let elem = this.text || ''
+//   let result = this.tag += `<${this.state[0]}>${elem}</${this.state[0]}>`
+//   // this.tag = ''
+//   // console.log(this.tag)
+//   return result
+//  }
 };
 
-console.log(ezjQuery.add('body')) // <body></body>
-console.log(ezjQuery.add('div')) // <body></body><div></div>
-console.log(ezjQuery.add('h1')); // <body></body><div></div><h1></h1>
+// ezjQuery
+//   .add('body') // <body></body>
+//   .add('div') // <body></body><div></div>
+//   .add('h1'); // <body></body><div></div><h1></h1>
 
 // /*
 //  *
@@ -97,28 +107,28 @@ console.log(ezjQuery.add('h1')); // <body></body><div></div><h1></h1>
 
 // example
 var helloList = ezjQuery
-console.log(helloList.add('body')) // <body></body>
-console.log(helloList.add('div')) // <body><div></div></body>
-console.log(helloList.add('ul')) // <body><div><ul></ul></div></body>
-console.log(helloList.add('li', 'Hello')) //<body><div><ul><li>Hello</li></ul></div></body>
-console.log(helloList.render());
+  .add('body') // <body></body>
+  .add('div') // <body><div></div></body>
+  .add('ul') // <body><div><ul></ul></div></body>
+  .add('li', 'Hello') //<body><div><ul><li>Hello</li></ul></div></body>
+  // .render();
 console.log(helloList); // <body><div><ul><li>Hello</li></ul></div></body>
 //  Обратите внимание, что после вызова render создание строки началось сначала
 
-var bodyDiv = ezjQuery
-  .add('body') //<body></body>
-  .add('div') //<body><div></div></body>
-  .render();
-console.log(bodyDiv); //<body><div></div></body>
+// var bodyDiv = ezjQuery
+//   .add('body') //<body></body>
+//   .add('div') //<body><div></div></body>
+//   .render();
+// console.log(bodyDiv); //<body><div></div></body>
 
-// // Для выполнивших все задания
-// // сделайте document.write(helloList) увидите результат :)
+// Для выполнивших все задания
+// сделайте document.write(helloList) увидите результат :)
 
-// // @SUPER
-// /*
-//  * Переименуйте объект ezjQuery в $.
-//  * Создание перевого метода должено быть без метода
-//  *
-//  * $('body').add('li', 'hi').render() // <body><li>hi</li></body>
-//  *
-//  * */
+// @SUPER
+/*
+ * Переименуйте объект ezjQuery в $.
+ * Создание перевого метода должено быть без метода
+ *
+ * $('body').add('li', 'hi').render() // <body><li>hi</li></body>
+ *
+ * */
