@@ -1,0 +1,17 @@
+body{
+    font: 20px sans-serif
+}
+#main li{
+  list-style-type: none;
+  margin: 0 0 0 20px
+}
+#main li:first-child{
+    margin: 10px 0 0 20px
+}
+#main article>input{
+    margin: 0 0 0 150px;
+    font-size: 30px
+}
+#main ul{
+    margin: 0 0 20px 0
+}   
